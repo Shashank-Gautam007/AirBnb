@@ -39,6 +39,31 @@
         </div>
         <% } %>
 
+            <!-- ============ BOOKING FORM (NAYA CODE YAHAN ADD KIYA) ============ -->
+            <% if(currUser && !listing.owner._id.equals(currUser._id)) { %>
+                <div class="col-6 offset-3 mb-4">
+                    <div class="booking-box p-3 border rounded">
+                        <h4>Book this stay</h4>
+                        <form action="/listings/<%= listing._id %>/bookings" method="POST" novalidate class="needs-validation">
+                            <div class="mb-3 mt-3">
+                                <label for="checkIn" class="form-label">Check-in</label>
+                                <input type="date" name="checkIn" id="checkIn" class="form-control" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="checkOut" class="form-label">Check-out</label>
+                                <input type="date" name="checkOut" id="checkOut" class="form-control" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="guests" class="form-label">Guests</label>
+                                <input type="number" name="guests" id="guests" class="form-control" min="1" value="1">
+                            </div>
+                            <button type="submit" class="btn btn-outline-dark">Book Now</button>
+                        </form>
+                    </div>
+                </div>
+                <% } %>
+            <!-- ============ BOOKING FORM END ============ -->
+
             <div class="col-8 offset-3 mb-3">
                 <hr />
                 <h4>Leave a Review</h4>

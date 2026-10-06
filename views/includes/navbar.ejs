@@ -1,58 +1,121 @@
 <style>
-    .search-btn{
+    .search-btn {
         background-color: #fe424d;
         color: #fff;
         border-radius: 25px;
         padding: 0 1rem 0 1rem;
     }
 
-    .search-btn:hover{
+    .search-btn:hover {
         background-color: #fe424d;
         color: #fff;
     }
-    .search-btn i{
+
+    .search-btn i {
         display: inline;
         margin: 0.5rem;
     }
 
-    .search-inp{
+    .search-inp {
         border-radius: 25px;
         padding: 0.5rem 3rem 0.5rem 3rem;
         font-size: 1rem;
     }
+
+    
+    .mobile-search-bar {
+        display: none;
+    }
+
+    @media (max-width: 991px) {
+
+        .mobile-search-bar {
+            display: flex;
+            width: 100%;
+            margin-top: 0.75rem;
+            gap: 0.5rem;
+        }
+
+        .mobile-search-bar .search-inp {
+            width: 100%;
+            margin-right: 0 !important;
+        }
+
+        .mobile-search-bar .search-btn {
+            flex-shrink: 0;
+        }
+
+        .navbar-collapse {
+            padding: 1rem 0;
+        }
+
+        .navbar-nav {
+            margin-bottom: 1rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--border-color, #dee2e6);
+        }
+
+        .navbar-nav:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+        }
+
+        .navbar-nav.ms-auto {
+            margin-left: 0 !important;
+        }
+
+        .navbar-nav .nav-link {
+            padding: 0.5rem 0;
+        }
+
+        #theme-toggle {
+            align-self: flex-start;
+            margin-top: 0.5rem;
+        }
+    }
 </style>
 
 <nav class="navbar navbar-expand-lg bg-body-tertiary border-bottem sticky-top">
-    <div class="container-fluid">
+    <div class="container-fluid flex-wrap">
         <a class="navbar-brand" href="/listings"><i class="fa-regular fa-compass"></i></a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup">
             <span class="navbar-toggler-icon"></span>
         </button>
 
+        <!-- Mobile-only search bar - always visible, out of hamburger -->
+        <form class="mobile-search-bar" role="search">
+            <input class="form-control search-inp" type="search" placeholder="Search destinations" />
+            <button class="btn search-btn" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+        </form>
 
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav">
 
                 <a class="nav-link" href="/listings">Explore</a>
-
+                <a class="nav-link" href="/trip-planner">Trip Planner</a>
 
             </div>
 
-            <div class="navbar-nav ms-auto">
+            <!-- Desktop search bar - shows of on navbar -->
+            <div class="navbar-nav ms-auto d-none d-lg-flex">
                 <form class="d-flex" role="search">
-                    <input class="form-control me-2 search-inp" type="search" placeholder="Search destinations"  />
-                    <button class="btn search-btn" type="submit"><i class="fa-solid fa-magnifying-glass"></i>Search</button>
+                    <input class="form-control me-2 search-inp" type="search" placeholder="Search destinations" />
+                    <button class="btn search-btn" type="submit"><i
+                            class="fa-solid fa-magnifying-glass"></i>Search</button>
                 </form>
             </div>
 
             <div class="navbar-nav ms-auto">
+                <button id="theme-toggle" class="btn btn-sm">
+                    <i class="fa-solid fa-circle-half-stroke"></i>
+                </button>
                 <a class="nav-link" href="/listings/new">Airbnb your home</a>
-                <% if(!currUser){ %>
+                <% if (!currUser) { %>
                     <a class="nav-link" href="/signup"><b>Sign up</b></a>
                     <a class="nav-link" href="/login"><b>Log in</b></a>
                     <% } %>
 
-                        <% if(currUser){ %>
+                        <% if (currUser) { %>
                             <a class="nav-link" href="/logout"><b>Log out</b></a>
                             <% } %>
 

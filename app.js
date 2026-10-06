@@ -19,6 +19,7 @@ const flash = require("connect-flash");
 const passport = require("passport");
 const LocalStrategy = require("passport-local");
 const User = require("./models/user.js");
+const tripPlannerRouter = require('./routes/tripPlanner');
 
 // const {listingSchema,reviewSchema} = require("./schema.js");
 // const Review = require("./models/review.js");
@@ -27,6 +28,9 @@ const User = require("./models/user.js");
 const listingRouter = require("./routes/listing.js");
 const reviewRouter = require("./routes/review.js");
 const userRouter = require("./routes/user.js");
+
+const bookingRouter = require("./routes/booking");
+const bookingListRouter = require("./routes/bookingList");
 
 
 const dbUrl = process.env.ATLASDB_URL;
@@ -50,6 +54,8 @@ app.use(express.urlencoded({ extended: true }));
 app.use(methodOverride("_method"));
 app.engine("ejs", ejsMate);
 app.use(express.static(path.join(__dirname, "/public")));
+
+
 
 
 const store = MongoStore.create({
@@ -97,7 +103,7 @@ passport.deserializeUser(User.deserializeUser());
 app.use((req,res,next) => {
     res.locals.success = req.flash("success");
     res.locals.error = req.flash("error");
-    res.locals.currUser = req.user;
+    res.locals.currUser = req.user || null;
     next();
 });
 
@@ -115,6 +121,11 @@ app.get("/demouser", async (req, res) => {
 app.use("/listings", listingRouter);
 app.use("/listings/:id/reviews", reviewRouter);
 app.use("/", userRouter);
+app.use('/trip-planner', tripPlannerRouter);
+
+app.use("/listings/:id/bookings", bookingRouter);
+app.use("/bookings", bookingListRouter);
+
 
 
 

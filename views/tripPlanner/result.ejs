@@ -1,0 +1,11 @@
+<% layout("layouts/boilerplate") %>
+
+<div class="row mt-4">
+  <div class="col-md-8 offset-md-2">
+    <h2>Your Trip to <%= destination %> (<%= days %> days)</h2>
+    <div class="card mt-3 p-4">
+      <%- plan %>
+    </div>
+    <a href="/trip-planner" class="btn btn-secondary mt-3">Plan Another Trip</a>
+  </div>
+</div>

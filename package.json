@@ -1,6 +1,6 @@
 {
-  "engines":{
-    "node":"v24.14.0"
+  "engines": {
+    "node": "v24.14.0"
   },
   "name": "major_pro_airbnb",
   "version": "1.0.0",
@@ -14,6 +14,7 @@
   "license": "ISC",
   "type": "commonjs",
   "dependencies": {
+    "@google/genai": "^2.24.0",
     "connect-flash": "^0.1.1",
     "connect-mongo": "^6.0.0",
     "cookie-parser": "^1.4.7",
@@ -24,6 +25,7 @@
     "express-session": "^1.19.0",
     "joi": "^18.2.3",
     "leaflet": "^1.9.4",
+    "marked": "^18.0.14",
     "method-override": "^3.0.0",
     "mongoose": "^9.7.0",
     "multer": "^2.2.0",

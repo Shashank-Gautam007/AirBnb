@@ -1,0 +1,83 @@
+<% layout("layouts/boilerplate") %>
+
+
+    <style>
+        /* Generate Plan button ka color */
+        .btn-trip-primary {
+            background-color: #fe424d;
+            border-color: #fe424d;
+            color: #fff;
+        }
+
+        .btn-trip-primary:hover {
+            background-color: #e63946;
+            border-color: #e63946;
+            color: #fff;
+        }
+
+
+        .form-select:focus,
+        .form-control:focus {
+            border-color: #fe424d;
+            box-shadow: 0 0 0 0.25rem rgba(254, 66, 77, 0.25);
+        }
+
+
+        select {
+            accent-color: #fe424d;
+        }
+    </style>
+
+
+
+    <div class="row mt-4">
+        
+
+        <div class="row mt-4">
+            <div class="col-md-6 offset-md-3">
+                <h2 class="mb-4">✈️ AI Trip Planner</h2>
+                <form method="POST" action="/trip-planner" class="needs-validation" novalidate>
+
+                    <div class="mb-3">
+                        <label class="form-label">Destination</label>
+                        <input type="text" name="destination" class="form-control" placeholder="e.g. Goa, Manali"
+                            required>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">No. of Days</label>
+                        <input type="number" name="days" class="form-control" min="1" max="30" required>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Budget</label>
+                        <select name="budget" class="form-select">
+                            <option value="low">Budget</option>
+                            <option value="moderate" selected>Moderate</option>
+                            <option value="luxury">Luxury</option>
+                        </select>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Preferences</label>
+                        <textarea name="preferences" class="form-control" rows="3"
+                            placeholder="e.g. adventure, food, history, beaches"></textarea>
+                    </div>
+
+
+                    <div class="mb-3">
+                        <label class="form-label">Language</label>
+                        <select name="language" class="form-select">
+                            <option value="English" selected>English</option>
+                            <option value="Hindi">हिन्दी (Hindi)</option>
+                            <option value="Hinglish">Hinglish</option>
+                            <option value="Marathi">मराठी (Marathi)</option>
+                            <option value="Tamil">தமிழ் (Tamil)</option>
+                            <option value="Bengali">বাংলা (Bengali)</option>
+                        </select>
+                    </div>
+
+                    <button type="submit" class="btn btn-trip-primary mb-2">Generate Plan 🚀</button>
+                </form>
+            </div>
+        </div>
